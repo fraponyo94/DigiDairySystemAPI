@@ -1,20 +1,37 @@
 package com.dairy.project.dairysystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table
+@Table(name = "mortality")
 @Data
 @NoArgsConstructor
 public class Mortality {
-    private int id;
+    @Id
+    @Column(name = "cowId",nullable = false)
+    private String cowid;
+
+    @Column(name = "postMortemReport")
     private String postMortemreport;
+
+    @Column(name = "findings")
     private String findings;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "date")
+    @JsonFormat
+            (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date date;
+
+    @Column(name = "isPostMortemDone")
     private boolean isPostMortemDone;
+
+    @MapsId
+    @OneToOne(targetEntity = Cow.class, fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false,name = "town")
+    private Cow cowId;
 }
