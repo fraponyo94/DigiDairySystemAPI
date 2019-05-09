@@ -60,4 +60,7 @@ public class Cow {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "cow")
     private List<Milk> milk;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "cow")
+    private List<Breeding> breedings;
+
 }

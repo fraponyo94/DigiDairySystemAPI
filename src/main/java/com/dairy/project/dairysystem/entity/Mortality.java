@@ -32,6 +32,6 @@ public class Mortality {
 
     @MapsId
     @OneToOne(targetEntity = Cow.class, fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false,name = "town")
+    @JoinColumn(nullable = false,name = "cowId")
     private Cow cowId;
 }

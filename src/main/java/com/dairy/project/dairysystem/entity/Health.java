@@ -53,6 +53,10 @@ public class Health {
     @JoinColumn(nullable = false, name = "cowId")
     private Cow cowhealth;
 
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false, name = "calfId")
+    private Calving calfHealth;
+
 
 
 }
